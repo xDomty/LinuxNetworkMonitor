@@ -19,7 +19,7 @@ mkdir -p "$HOME/.cache/NetworkUsage"
 
 # 3. Compilation
 echo "Compiling $SOURCE_FILE..."
-g++ -O3 -std=c++17 "$SOURCE_FILE" -o "$APP_NAME" -lstdc++fs
+g++ -O3 -std=c++17 "$SOURCE_FILE" -o "$APP_NAME"
 if [ $? -eq 0 ]; then
     mv "$APP_NAME" "$LOCAL_BIN/$APP_NAME"
     chmod +x "$LOCAL_BIN/$APP_NAME"
