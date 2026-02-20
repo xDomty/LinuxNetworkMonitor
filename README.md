@@ -29,7 +29,7 @@ chmod +x install.sh
 
 ## Service Setup (Manual)
 
-To ensure the monitor runs in the background and starts on boot without using `sudo`, choose the method that matches your init system.
+To ensure the monitor runs in the background and starts on boot for the `user` not the `root`, choose the method that matches your init system.
 
 ### Option A: Systemd (Ubuntu, Arch, Fedora, Debian)
 
