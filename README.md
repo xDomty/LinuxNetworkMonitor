@@ -9,6 +9,35 @@ A lightweight, C++17 daemon for Linux that monitors network interface traffic vi
 - **Categorization**: Automatically separates physical hardware (WiFi/Ethernet) from virtual interfaces (VPNs, Docker, Loopback).
 - **Daily Rotation**: Logs data organized by date.
 
+## Usage and Monitoring
+
+### Data Location
+
+Usage data is stored as plain text files:
+
+- **Physical Devices:** `~/.cache/NetworkUsage/PhysicalInterfaces/`
+- **Virtual Devices:** `~/.cache/NetworkUsage/VirtualInterfaces/`
+
+### Commands
+
+- **Check if running:**
+
+  ```bash
+  pgrep -fl netmon
+  ```
+
+- **View live logs:**
+
+  ```bash
+  watch -n 1 cat ~/.cache/NetworkUsage/PhysicalInterfaces/TotalPhysicalUsage
+  ```
+  (or any file inside `~/.cache/NetworkUsage/PhysicalInterfaces` / `~/.cache/NetworkUsage/VirtualInterfaces`)
+
+- **Stop the monitor:**
+
+  ```bash
+  pkill netmon
+  ```
 ## Installation
 
 ### Build from Source
@@ -109,32 +138,3 @@ if not pgrep -x "netmon" > /dev/null
 end
 ```
 
-## Usage and Monitoring
-
-### Data Location
-
-Usage data is stored as plain text files:
-
-- **Physical Devices:** `~/.cache/NetworkUsage/PhysicalInterfaces/`
-- **Virtual Devices:** `~/.cache/NetworkUsage/VirtualInterfaces/`
-
-### Commands
-
-- **Check if running:**
-
-  ```bash
-  pgrep -fl netmon
-  ```
-
-- **View live logs:**
-
-  ```bash
-  watch -n 1 cat ~/.cache/NetworkUsage/PhysicalInterfaces/TotalPhysicalUsage
-  ```
-  (or any file inside `~/.cache/NetworkUsage/PhysicalInterfaces` / `~/.cache/NetworkUsage/VirtualInterfaces`)
-
-- **Stop the monitor:**
-
-  ```bash
-  pkill netmon
-  ```
