@@ -129,8 +129,9 @@ Usage data is stored as plain text files:
 - **View live logs:**
 
   ```bash
-  tail -f ~/.cache/NetworkUsage/PhysicalInterfaces/TotalPhysicalUsage
+  watch -n 1 cat ~/.cache/NetworkUsage/PhysicalInterfaces/TotalPhysicalUsage
   ```
+  (or any file inside `~.cache/NetworkUsage/PhysicalInterfaces` / `~.cache/NetworkUsage/VirtualInterfaces`)
 
 - **Stop the monitor:**
 
