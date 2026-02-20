@@ -75,6 +75,10 @@ Since OpenRC's `/etc/init.d/` is restricted to root, the standard user-level app
    ```bash
    crontab -e
    ```
+   -> if the command not found install `cronie` and then
+   ```
+   sudo mkdir -p /var/spool/cron/crontabs
+   ```
 
 2. **Add the reboot trigger:**
 
