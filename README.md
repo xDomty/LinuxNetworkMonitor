@@ -18,26 +18,6 @@ Usage data is stored as plain text files:
 - **Physical Devices:** `~/.cache/NetworkUsage/PhysicalInterfaces/`
 - **Virtual Devices:** `~/.cache/NetworkUsage/VirtualInterfaces/`
 
-### Commands
-
-- **Check if running:**
-
-  ```bash
-  pgrep -fl netmon
-  ```
-
-- **View live logs:**
-
-  ```bash
-  watch -n 1 cat ~/.cache/NetworkUsage/PhysicalInterfaces/TotalPhysicalUsage
-  ```
-  (or any file inside `~/.cache/NetworkUsage/PhysicalInterfaces` / `~/.cache/NetworkUsage/VirtualInterfaces`)
-
-- **Stop the monitor:**
-
-  ```bash
-  pkill netmon
-  ```
 ## Installation
 
 ### Build from Source
@@ -137,4 +117,25 @@ if not pgrep -x "netmon" > /dev/null
     disown
 end
 ```
+
+### Commands
+
+- **Check if running:**
+
+  ```bash
+  pgrep -fl netmon
+  ```
+
+- **View live logs:**
+
+  ```bash
+  watch -n 1 cat ~/.cache/NetworkUsage/PhysicalInterfaces/TotalPhysicalUsage
+  ```
+  (or any file inside `~/.cache/NetworkUsage/PhysicalInterfaces` / `~/.cache/NetworkUsage/VirtualInterfaces`)
+
+- **Stop the monitor:**
+
+  ```bash
+  pkill netmon
+  ```
 
