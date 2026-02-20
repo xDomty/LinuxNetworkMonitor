@@ -68,48 +68,46 @@ Systemd provides a "User Bus" specifically for background tasks like this.
 
 ### Option B: OpenRC (Gentoo, Alpine, Artix)
 
-Since OpenRC's `/etc/init.d/` is restricted to root, the standard user-level approach is using Cron.
+#### Create the auto-detecting startup script:
+```bash
+sudo bash -c 'cat <<EOF > /etc/local.d/netmon.start
+#!/bin/bash
+# Start netmon for user: '$USER'
+su - '$USER' -c "'$HOME'/.local/bin/netmon &"
+EOF'
+```
 
-1. **Open your crontab:**
-
-   ```bash
-   crontab -e
-   ```
-   -> if the command not found install `cronie` and then
-   ```
-   sudo mkdir -p /var/spool/cron/crontabs
-   ```
-
-2. **Add the reboot trigger:**
-
-   ```
-   @reboot /home/YOUR_USERNAME/.local/bin/netmon
-   ```
-
-   **Note:** Replace `YOUR_USERNAME` with your actual Linux login name.
+#### Set permissions and enable service:
+```bash
+sudo chmod +x /etc/local.d/netmon.start
+sudo rc-update add local default
+sudo rc-service local restart
+```
 
 ### Option C: Runit (Void Linux) or Generic Fallback
 
-If you don't use Cron or Systemd, you can trigger the monitor when you log into your shell.
+If you prefer to start the monitor when you log in to your shell:
 
-1. **Edit your shell profile:**
+#### bash / zsh
+- Edit your profile:
+  - `nano ~/.bashrc` (for Bash) 
+  - `nano ~/.zshrc`  (for Zsh)
+- Add to the end of the file:
+```bash
+# Start netmon if not already running
+[[ ! $(pgrep -x "netmon") ]] && ~/.local/bin/netmon &
+```
 
-   ```bash
-   nano ~/.bashrc
-   ```
-
-   or
-
-   ```bash
-   nano ~/.zshrc
-   ```
-
-2. **Add the auto-launch line:**
-
-   ```bash
-   # Start netmon if it isn't already running
-   [[ ! $(pgrep -x "netmon") ]] && ~/.local/bin/netmon &
-   ```
+#### fish
+- Edit your profile :`nano ~/.config/fish/config.fish`
+- Add to the end of the file:
+```
+# Start netmon if not already running
+if not pgrep -x "netmon" > /dev/null
+    ~/.local/bin/netmon &
+    disown
+end
+```
 
 ## Usage and Monitoring
 
