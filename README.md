@@ -131,7 +131,7 @@ Usage data is stored as plain text files:
   ```bash
   watch -n 1 cat ~/.cache/NetworkUsage/PhysicalInterfaces/TotalPhysicalUsage
   ```
-  (or any file inside `~.cache/NetworkUsage/PhysicalInterfaces` / `~.cache/NetworkUsage/VirtualInterfaces`)
+  (or any file inside `~/.cache/NetworkUsage/PhysicalInterfaces` / `~/.cache/NetworkUsage/VirtualInterfaces`)
 
 - **Stop the monitor:**
 
