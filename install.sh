@@ -15,7 +15,7 @@ fi
 
 # 2. Setup Directories
 mkdir -p "$LOCAL_BIN"
-mkdir -p "$HOME/NetworkUsage"
+mkdir -p "$HOME/.cache/NetworkUsage"
 
 # 3. Compilation
 echo "Compiling $SOURCE_FILE..."
