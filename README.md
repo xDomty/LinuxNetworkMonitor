@@ -33,7 +33,7 @@ chmod +x install.sh
 
 1. Verifies `g++` is installed.
 2. Compiles `netmon.cpp` with C++17 standards.
-3. Creates `~/NetworkUsage` for data storage.
+3. Creates `~/.cache/NetworkUsage` for data storage.
 4. Installs the binary to `~/.local/bin/netmon`.
 
 ## Service Setup (Manual)
